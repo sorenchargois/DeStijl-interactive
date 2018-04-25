@@ -20,7 +20,11 @@ var button15;
 // blue left
 var button16;
 // yellow top
-// var button17;
+var button17;
+// red main
+var button18;
+// right blue
+var button19;
 
 var buttons = [];
 
@@ -44,12 +48,13 @@ function setup(){
     button14 = new Button(654, 324, 142, 322, 255);  
     button15 = new Button(654, 654, 142, 142, 255);
     // blue left
-    button16 = new Button(54, 503, 92, 143, "blue");    
-    // yellow top
-    // this one actualyl wont work until I get the else statement figured out    
-    // button17 = new Button(154, 54, 342, 142, "yellow");    
-    
-
+    button16 = new Button(54, 503, 92, 143, "blue");   
+    // yellow top  
+    button17 = new Button(154, 54, 342, 142, "yellow");  
+    // red main
+    button18 = new Button(304, 324, 342, 322, "red");
+    // blue right
+    button19 = new Button(504, 204, 142, 112, "blue");
 }
 
 function draw() {
@@ -87,14 +92,14 @@ function draw() {
     //     rect(154, 54, 342, 142);
     // }
 
-    // red main
-    fill('red');
-    rect(304, 324, 342, 322);
+    // // red main
+    // fill('red');
+    // rect(304, 324, 342, 322);
 
-    if(mouseX>304 && mouseX<646 && mouseY>324 && mouseY<646){
-        fill(255, 204, 0);
-        rect(304, 324, 342, 322);
-    }
+    // if(mouseX>304 && mouseX<646 && mouseY>324 && mouseY<646){
+    //     fill(255, 204, 0);
+    //     rect(304, 324, 342, 322);
+    // }
 
     // blue one left
     // fill("blue");
@@ -105,7 +110,6 @@ function draw() {
     //     rect(54, 503, 92, 143);
     // }
 
-    // blue left is rect(54, 503, 92, 143)
 
     button.display();
     button2.display();
@@ -122,9 +126,10 @@ function draw() {
     button13.display(); 
     button14.display();         
     button15.display();                                                                                                               
-    button16.display(); 
-    // button17.display();                                                                                                                                                                                                                    
-                                                                                                                                                                                                                       
+    button16.display();     
+    button17.display();
+    button18.display();    
+    button19.display();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 }
 
 function mousePressed(){
@@ -146,10 +151,18 @@ function mousePressed(){
     // blue square  
     button16.pressedColor(mouseX, mouseY);    
     // yellow top
-    // this one actualyl wont work until I get the else statement figured out
-    // button17.pressedColor(mouseX, mouseY);                                                                                                                            
+    button17.pressedColor(mouseX, mouseY);  
+    // red main  
+    button18.pressedColor(mouseX, mouseY);  
+    // blue right
+    button19.pressedColor(mouseX, mouseY);                                                                                                                                                                                                                                                      
 }
 
+// I WAS THINKING THIS COULD WORK, IT DOESN'T
+
+// function mouseOver(){
+//     button16.hovering(mouseX, mouseY);
+// }
 
 
 class Button{
@@ -179,10 +192,18 @@ pressedColor(mx, my){
     else if(mx >= this.x && mx <= this.x + this.w && my>= this.y && my <= this.y+ this.h && this.rect_color === "red"){
         this.rect_color = "yellow";
     }
-    // else (mx >= this.x && mx <= this.x + this.w && my>= this.y && my <= this.y+ this.h && this.rect_color === "yellow"){
-    //     this.rect_color = "blue";
-    // }   
+    else if (mx >= this.x && mx <= this.x + this.w && my>= this.y && my <= this.y+ this.h && this.rect_color === "yellow"){
+        this.rect_color = "blue";
+    }   
 }
+
+// I WAS THINKING THIS COULD WORK TO HAVE THE HOVER AFFECT
+// hovering(mx, my){
+//     if(mx >= this.x && mx <= this.x + this.w && my>= this.y && my <= this.y+ this.h && this.rect_color === "blue") {
+//         fill("red");
+//     }
+// }
+
    display(){
     fill(this.rect_color);
     rect(this.x, this.y, this.w, this.h);
